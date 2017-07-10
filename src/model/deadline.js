@@ -1,12 +1,7 @@
 // @flow
 
-import { fromName } from './month';
-import type { Month } from './month';
-
-export type Deadline = {|
-  +month: Month,
-  +year: number
-|};
+import Month from './month';
+import type MonthType from './month';
 
 const monthNames = [
   'January',
@@ -23,17 +18,27 @@ const monthNames = [
   'December'
 ];
 
-export function fromMonthYearString(string: string): Deadline {
-  const split = string.split(' ');
+export default class Deadline {
+  month: MonthType;
+  year: number;
 
-  return {
-    month: fromName(split[0]),
-    year: parseInt(split[1])
-  };
-}
+  constructor(month: MonthType, year: number) {
+    this.month = month;
+    this.year = year;
+  }
 
-export function isValid(string: string) {
-  const split = string.split(' ');
+  static fromMonthYearString(string: string): Deadline {
+    const split = string.split(' ');
+    return new Deadline(Month.fromName(split[0]), parseInt(split[1]));
+  }
 
-  return monthNames.includes(split[0]) && /^\d\d\d\d$/.test(split[1]);
+  static isValid(string: string) {
+    const split = string.split(' ');
+
+    return monthNames.includes(split[0]) && /^\d\d\d\d$/.test(split[1]);
+  }
+
+  toString() {
+    return this.month.toString() + ' ' + this.year;
+  }
 }

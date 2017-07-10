@@ -21,7 +21,7 @@ export default function App() {
   return (
     <Container className="container">
       <Goals />
-      <Summary />
+      {/* <Summary /> */}
     </Container>
   );
 }

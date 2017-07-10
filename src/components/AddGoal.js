@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import linkState from 'linkstate';
 
 import Money from '../model/money';
-import * as Deadline from '../model/deadline';
+import Deadline from '../model/deadline';
 import type { Goal } from '../model/goal';
 
 import addGoal from '../store/actions/addGoal';

@@ -1,7 +1,7 @@
 // @flow
 
 import type Money from './money';
-import type { Deadline } from './deadline';
+import type Deadline from './deadline';
 
 export type Goal = {|
   +id: number,

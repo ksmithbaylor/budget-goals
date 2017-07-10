@@ -6,11 +6,22 @@ import type { Goal } from '../model/goal';
 
 function GoalDisplay(props: Goal) {
   return (
-    <li>
-      <pre>
-        {JSON.stringify(props)}
-      </pre>
-    </li>
+    <tr>
+      <td>
+        {props.name}
+      </td>
+      <td>
+        {props.amount.toString()}
+      </td>
+      <td>
+        {props.soFar.toString()}
+      </td>
+      <td>
+        {props.deadline.toString()}
+      </td>
+      <td>- -</td>
+      <td>- -</td>
+    </tr>
   );
 }
 

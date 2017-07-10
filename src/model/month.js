@@ -1,10 +1,5 @@
 // @flow
 
-export type Month = {|
-  +number: number,
-  +name: string
-|};
-
 const monthNames = [
   'January',
   'February',
@@ -20,16 +15,24 @@ const monthNames = [
   'December'
 ];
 
-export function fromName(name: string): Month {
-  return {
-    name,
-    number: monthNames.indexOf(name) + 1
-  };
-}
+export default class Month {
+  name: string;
+  number: number;
 
-export function fromNumber(number: number): Month {
-  return {
-    name: monthNames[number - 1],
-    number
-  };
+  constructor(name: string, number: number) {
+    this.name = name;
+    this.number = number;
+  }
+
+  static fromName(name: string): Month {
+    return new Month(name, monthNames.indexOf(name) + 1);
+  }
+
+  static fromNumber(number: number): Month {
+    return new Month(monthNames[number - 1], number);
+  }
+
+  toString() {
+    return this.name;
+  }
 }
