@@ -14,6 +14,7 @@ injectGlobal`
 
 const Container = styled.div`
   border: 1px solid #eee;
+  border-radius: 5px;
   padding: 1em;
 `;
 

@@ -6,12 +6,13 @@ import styled from 'styled-components';
 
 import type { Goal } from '../model/goal';
 import type { State } from '../store/reducers';
+import type { GoalsState } from '../store/reducers/goals';
 
 import GoalDisplay from './GoalDisplay';
 
 const Container = styled.table``;
 
-function GoalTable(props: { goals: Goal[] }) {
+function GoalTable(props: { goals: GoalsState }) {
   return (
     <Container>
       <thead>
@@ -25,7 +26,9 @@ function GoalTable(props: { goals: Goal[] }) {
         </tr>
       </thead>
       <tbody>
-        {props.goals.map(goal => <GoalDisplay key={goal.id} {...goal} />)}
+        {Object.keys(props.goals).map((id: string) =>
+          <GoalDisplay key={id} goal={props.goals[Number(id)]} />
+        )}
       </tbody>
     </Container>
   );

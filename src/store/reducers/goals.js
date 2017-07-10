@@ -3,16 +3,16 @@
 import type { Goal } from '../../model/goal';
 import type { Action } from '../actions';
 
-type LocalState = Goal[];
-export const initialState: LocalState = [];
+export type GoalsState = { [number]: Goal };
+export const initialState: GoalsState = {};
 
 export default function goals(
-  state: LocalState = initialState,
+  state: GoalsState = initialState,
   action: Action
 ) {
   switch (action.type) {
     case 'ADD_GOAL':
-      return state.concat(action.payload);
+      return { ...state, [action.payload.id]: action.payload };
     default:
       return state;
   }

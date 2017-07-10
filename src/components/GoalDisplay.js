@@ -4,20 +4,20 @@ import React from 'react';
 
 import type { Goal } from '../model/goal';
 
-function GoalDisplay(props: Goal) {
+function GoalDisplay({ goal }: { goal: Goal }) {
   return (
     <tr>
       <td>
-        {props.name}
+        {goal.name}
       </td>
       <td>
-        {props.amount.toString()}
+        {goal.amount.toString()}
       </td>
       <td>
-        {props.soFar.toString()}
+        {goal.soFar.toString()}
       </td>
       <td>
-        {props.deadline.toString()}
+        {goal.deadline.toString()}
       </td>
       <td>- -</td>
       <td>- -</td>
