@@ -2,10 +2,12 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import Big from 'big.js';
+import styled from 'styled-components';
+import linkState from 'linkstate';
 
+import Money from '../model/money';
+import * as Deadline from '../model/deadline';
 import type { Goal } from '../model/goal';
-import { fromMonthYearString } from '../model/deadline';
 
 import addGoal from '../store/actions/addGoal';
 
@@ -16,28 +18,108 @@ type Props = {
 };
 
 type State = {|
-  +name: string,
-  +amount: string,
-  +soFar: string,
-  +deadline: string
+  name: string,
+  amount: string,
+  soFar: string,
+  deadline: string
 |};
+
+const initialState: State = { name: '', amount: '', soFar: '', deadline: '' };
+
+const Container = styled.form`
+  display: flex;
+  flex-direction: row;
+`;
+
+const Field = styled.input`
+  margin-right: 0.5em;
+  flex-grow: ${props => props.size || '1'};
+  flex-basis: ${props => (props.size || '1') + '%'};
+  display: inline-block !important;
+  width: unset !important;
+  height: 2.5em;
+`;
+
+const SubmitButton = styled.button`
+  flex: 0 0 auto;
+  height: 2.5em;
+  margin-right: 0 !important;
+`;
+
+const Title = styled.h4`margin-top: 0 !important;`;
 
 class AddGoal extends React.Component<Props, Props, State> {
   static defaultProps: Props = { addGoal(goal) {} };
-  state: State = { name: '', amount: '', soFar: '', deadline: '' };
+  state: State = initialState;
 
   handleAdd = (e: Event) => {
+    e.preventDefault();
+
     this.props.addGoal({
       id: nextId++,
       name: this.state.name,
-      amount: new Big(this.state.amount),
-      soFar: new Big(this.state.soFar),
-      deadline: fromMonthYearString(this.state.deadline)
+      amount: new Money(this.state.amount),
+      soFar: new Money(this.state.soFar),
+      deadline: Deadline.fromMonthYearString(this.state.deadline)
     });
+
+    this.setState(initialState);
+  };
+
+  readyToAdd = () => {
+    const { name, amount, soFar, deadline } = this.state;
+
+    return (
+      name.length > 0 &&
+      Money.isValid(amount) &&
+      Money.isValid(soFar) &&
+      Deadline.isValid(deadline)
+    );
   };
 
   render() {
-    return <p onClick={this.props.addGoal}>add goal</p>;
+    return (
+      <div>
+        <Title>Add a goal:</Title>
+        <Container onSubmit={this.handleAdd}>
+          <Field
+            type="text"
+            placeholder="Goal name"
+            size="3"
+            value={this.state.name}
+            onChange={linkState(this, 'name')}
+          />
+          <Field
+            type="text"
+            placeholder="Target amount"
+            value={this.state.amount}
+            onChange={linkState(this, 'amount')}
+          />
+          <Field
+            type="text"
+            placeholder="Amount saved so far"
+            size="0.3"
+            value={this.state.soFar}
+            onChange={linkState(this, 'soFar')}
+          />
+          <Field
+            type="text"
+            placeholder="Deadline"
+            size="2"
+            value={this.state.deadline}
+            onChange={linkState(this, 'deadline')}
+          />
+          <SubmitButton
+            type="submit"
+            disabled={!this.readyToAdd()}
+            onClick={this.handleAdd}
+            className="button button-default"
+          >
+            Add
+          </SubmitButton>
+        </Container>
+      </div>
+    );
   }
 }
 

@@ -11,7 +11,7 @@ export default function goals(
   action: Action
 ) {
   switch (action.type) {
-    case 'ADD_kGOAL':
+    case 'ADD_GOAL':
       return state.concat(action.payload);
     default:
       return state;

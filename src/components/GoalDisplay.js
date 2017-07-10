@@ -1,13 +1,15 @@
 // @flow
 
-import React from "react";
+import React from 'react';
 
-import type { Goal } from "../model/goal";
+import type { Goal } from '../model/goal';
 
 function GoalDisplay(props: Goal) {
   return (
     <li>
-      goal {props.id}
+      <pre>
+        {JSON.stringify(props)}
+      </pre>
     </li>
   );
 }
