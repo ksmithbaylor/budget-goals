@@ -45,7 +45,7 @@ export default class Month {
       throw new Error('Invalid month/year string');
     }
     const split = string.split(' ');
-    return Month.fromNameAndYear(split[0], parseInt(split[1]));
+    return Month.fromNameAndYear(split[0], parseInt(split[1], 10));
   }
 
   static currentMonth(): Month {

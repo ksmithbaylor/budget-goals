@@ -4,8 +4,8 @@ import React from 'react';
 import styled, { injectGlobal } from 'styled-components';
 
 import Goals from './Goals';
-import Summary from './Summary';
 
+// eslint-disable-next-line no-unused-expressions
 injectGlobal`
   body {
     padding-top: 1em;
@@ -22,7 +22,6 @@ export default function App() {
   return (
     <Container className="container">
       <Goals />
-      {/* <Summary /> */}
     </Container>
   );
 }

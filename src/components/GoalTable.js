@@ -4,7 +4,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import type { Goal } from '../model/goal';
 import type { State } from '../store/reducers';
 import type { GoalsState } from '../store/reducers/goals';
 
