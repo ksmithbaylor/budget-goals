@@ -4,14 +4,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
+import sortedGoals from '../store/selectors/sortedGoals';
 import type { State } from '../store/reducers';
-import type { GoalsState } from '../store/reducers/goals';
+import type { Goal } from '../model/goal';
 
 import GoalDisplay from './GoalDisplay';
 
 const Container = styled.table``;
 
-function GoalTable(props: { goals: GoalsState }) {
+function GoalTable(props: { goals: Goal[] }) {
   return (
     <Container>
       <thead>
@@ -25,8 +26,8 @@ function GoalTable(props: { goals: GoalsState }) {
         </tr>
       </thead>
       <tbody>
-        {Object.keys(props.goals).map((id: string) =>
-          <GoalDisplay key={id} goal={props.goals[Number(id)]} />
+        {props.goals.map((goal: Goal) =>
+          <GoalDisplay key={goal.id} goal={goal} />
         )}
       </tbody>
     </Container>
@@ -35,7 +36,7 @@ function GoalTable(props: { goals: GoalsState }) {
 
 export default connect(
   (state: State) => ({
-    goals: state.goals
+    goals: sortedGoals(state)
   }),
   null,
   null,
