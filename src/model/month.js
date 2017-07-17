@@ -63,30 +63,42 @@ export default class Month {
     );
   }
 
-  isEqualTo(other: Month) {
+  succ(): Month {
+    const number = this.number % 12 + 1;
+    const year = number < this.number ? this.year + 1 : this.year;
+    return Month.fromNumberAndYear(number, year);
+  }
+
+  pred(): Month {
+    const number = (this.number - 2 + 12) % 12 + 1;
+    const year = number > this.number ? this.year - 1 : this.year;
+    return Month.fromNumberAndYear(number, year);
+  }
+
+  isEqualTo(other: Month): boolean {
     return other.year === this.year && other.number === this.number;
   }
 
-  isBefore(other: Month) {
+  isBefore(other: Month): boolean {
     return (
       other.year > this.year ||
       (other.year === this.year && other.number > this.number)
     );
   }
 
-  isAfter(other: Month) {
+  isAfter(other: Month): boolean {
     return !this.isEqualTo(other) && !this.isBefore(other);
   }
 
-  isNotBefore(other: Month) {
+  isNotBefore(other: Month): boolean {
     return !this.isBefore(other);
   }
 
-  isNotAfter(other: Month) {
+  isNotAfter(other: Month): boolean {
     return !this.isAfter(other);
   }
 
-  toString() {
+  toString(): string {
     return `${this.name} ${this.year}`;
   }
 }
