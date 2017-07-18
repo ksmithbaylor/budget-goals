@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import StartDateSelector from './StartDateSelector';
 import startDateFor from '../store/selectors/startDateFor';
-import type { Goal } from '../model/goal';
+import type Goal from '../model/goal';
 import type Month from '../model/month';
 
 function GoalDisplay({ goal, startDate }: { goal: Goal, startDate: ?Month }) {

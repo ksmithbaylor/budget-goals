@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import sortedGoals from '../store/selectors/sortedGoals';
 import type { State } from '../store/reducers';
-import type { Goal } from '../model/goal';
+import type Goal from '../model/goal';
 
 import GoalDisplay from './GoalDisplay';
 

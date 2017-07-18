@@ -1,6 +1,6 @@
 // @flow
 
-import type { Goal } from '../../model/goal';
+import type Goal from '../../model/goal';
 
 export type ADD_GOAL = {|
   +type: 'ADD_GOAL',

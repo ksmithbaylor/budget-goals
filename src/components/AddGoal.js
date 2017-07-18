@@ -7,7 +7,7 @@ import linkState from 'linkstate';
 
 import Money from '../model/money';
 import Month from '../model/month';
-import type { Goal } from '../model/goal';
+import Goal from '../model/goal';
 
 import addGoal from '../store/actions/addGoal';
 
@@ -55,13 +55,15 @@ class AddGoal extends React.Component<Props, Props, State> {
   handleAdd = (e: Event) => {
     e.preventDefault();
 
-    this.props.addGoal({
-      id: nextId++,
-      name: this.state.name,
-      amount: new Money(this.state.amount),
-      soFar: new Money(this.state.soFar),
-      deadline: Month.fromMonthYearString(this.state.deadline)
-    });
+    this.props.addGoal(
+      new Goal({
+        id: nextId++,
+        name: this.state.name,
+        amount: new Money(this.state.amount),
+        soFar: new Money(this.state.soFar),
+        deadline: Month.fromMonthYearString(this.state.deadline)
+      })
+    );
 
     this.setState(initialState);
   };

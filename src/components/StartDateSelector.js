@@ -7,7 +7,7 @@ import type { Dispatch } from 'redux';
 import Month from '../model/month';
 import setStartDate from '../store/actions/setStartDate';
 import clearStartDate from '../store/actions/clearStartDate';
-import type { Goal } from '../model/goal';
+import type Goal from '../model/goal';
 import type { Action } from '../store/actions';
 
 function* monthsFrom(month, max, deadline) {

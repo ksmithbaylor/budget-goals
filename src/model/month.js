@@ -20,24 +20,24 @@ export default class Month {
   number: number;
   year: number;
 
-  constructor(name: string, number: number, year: number) {
-    this.name = name;
-    this.number = number;
-    this.year = year;
+  constructor(props: { name: string, number: number, year: number }) {
+    this.name = props.name;
+    this.number = props.number;
+    this.year = props.year;
   }
 
   static fromNameAndYear(name: string, year: number): Month {
     if (!monthNames.includes(name)) {
       throw new Error(`Invalid month name: ${name}`);
     }
-    return new Month(name, monthNames.indexOf(name) + 1, year);
+    return new Month({ name, number: monthNames.indexOf(name) + 1, year });
   }
 
   static fromNumberAndYear(number: number, year: number): Month {
     if (number < 1 || number > 12) {
       throw new Error(`Invalid month number: ${number}`);
     }
-    return new Month(monthNames[number - 1], number, year);
+    return new Month({ name: monthNames[number - 1], number, year });
   }
 
   static fromMonthYearString(string: string): Month {

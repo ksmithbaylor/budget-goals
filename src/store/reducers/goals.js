@@ -1,6 +1,6 @@
 // @flow
 
-import type { Goal } from '../../model/goal';
+import type Goal from '../../model/goal';
 import type { Action } from '../actions';
 
 export type GoalsState = { [number]: Goal };
