@@ -2,6 +2,7 @@
 
 import type Goal from '../../model/goal';
 import type { Action } from '../actions';
+import { omit } from 'lodash';
 
 export type GoalsState = { [number]: Goal };
 export const initialState: GoalsState = {};
@@ -13,6 +14,8 @@ export default function goals(
   switch (action.type) {
     case 'ADD_GOAL':
       return { ...state, [action.payload.id]: action.payload };
+    case 'REMOVE_GOAL':
+      return omit(state, action.payload);
     default:
       return state;
   }

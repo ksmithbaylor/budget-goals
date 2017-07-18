@@ -2,15 +2,45 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import StartDateSelector from './StartDateSelector';
 import startDateFor from '../store/selectors/startDateFor';
 import type Goal from '../model/goal';
 import type Month from '../model/month';
+import removeGoal from '../store/actions/removeGoal';
 
-function GoalDisplay({ goal, startDate }: { goal: Goal, startDate: ?Month }) {
+const Row = styled.tr`
+  line-height: 2.87em;
+  td {
+    vertical-align: inherit !important;
+  }
+`;
+
+const DeleteButton = styled.td`
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    background-color: #eee;
+  }
+
+  &:after {
+    content: '\u2573';
+  }
+`;
+
+function GoalDisplay({
+  goal,
+  startDate,
+  removeGoal
+}: {
+  goal: Goal,
+  startDate: ?Month,
+  removeGoal: number => void
+}) {
   return (
-    <tr>
+    <Row>
       <td>
         {goal.name}
       </td>
@@ -31,7 +61,8 @@ function GoalDisplay({ goal, startDate }: { goal: Goal, startDate: ?Month }) {
           monthsInAdvance={12}
         />
       </td>
-    </tr>
+      <DeleteButton onClick={() => removeGoal(goal.id)} />
+    </Row>
   );
 }
 
@@ -39,4 +70,6 @@ const mapStateToProps = (state, props) => ({
   startDate: startDateFor(state, props)
 });
 
-export default connect(mapStateToProps)(GoalDisplay);
+const mapDispatchToProps = { removeGoal };
+
+export default connect(mapStateToProps, mapDispatchToProps)(GoalDisplay);

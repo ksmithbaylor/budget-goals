@@ -23,6 +23,7 @@ function GoalTable(props: { goals: Goal[] }) {
           <th>Deadline</th>
           <th>Per Month</th>
           <th>Start Month</th>
+          <th />
         </tr>
       </thead>
       <tbody>
