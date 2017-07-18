@@ -4,14 +4,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import linkState from 'linkstate';
+import uuid from 'uuid/v1';
 
 import Money from '../model/money';
 import Month from '../model/month';
 import Goal from '../model/goal';
 
 import addGoal from '../store/actions/addGoal';
-
-let nextId = 0;
 
 type Props = {
   addGoal(goal: Goal): void
@@ -57,7 +56,7 @@ class AddGoal extends React.Component<Props, Props, State> {
 
     this.props.addGoal(
       new Goal({
-        id: nextId++,
+        id: uuid(),
         name: this.state.name,
         amount: new Money(this.state.amount),
         soFar: new Money(this.state.soFar),
