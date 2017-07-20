@@ -15,7 +15,6 @@ export default function startDates(
     case 'SET_START_DATE':
       return { ...state, [action.payload.goalId]: action.payload.month };
     case 'CLEAR_START_DATE':
-      return { ...state, [action.payload.goalId]: null };
     case 'REMOVE_GOAL':
       return omit(state, action.payload);
     default:

@@ -16,6 +16,14 @@ export default function goals(
       return { ...state, [action.payload.id]: action.payload };
     case 'REMOVE_GOAL':
       return omit(state, action.payload);
+    case 'UPDATE_GOAL':
+      return {
+        ...state,
+        [action.payload.goalId]: {
+          ...state[action.payload.goalId],
+          [action.payload.field]: action.payload.newValue
+        }
+      };
     default:
       return state;
   }
