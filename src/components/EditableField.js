@@ -22,7 +22,7 @@ function editableValue(value: Money | Month | string) {
   }
 }
 
-export default class EditableBalance extends React.Component {
+export default class EditableField extends React.Component {
   props: Props;
   state = {
     editing: false,

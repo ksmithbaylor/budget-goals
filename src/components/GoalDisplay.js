@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import StartDateSelector from './StartDateSelector';
-import EditableBalance from './EditableBalance';
+import EditableField from './EditableField';
 import startDateFor from '../store/selectors/startDateFor';
 import type Goal from '../model/goal';
 import type Month from '../model/month';
@@ -49,17 +49,17 @@ function GoalDisplay({
       <td>
         {goal.name}
       </td>
-      <EditableBalance
+      <EditableField
         value={goal.amount}
         width="5em"
         onChange={newValue => updateGoal(goal.id, 'amount', newValue)}
       />
-      <EditableBalance
+      <EditableField
         value={goal.soFar}
         width="5em"
         onChange={newValue => updateGoal(goal.id, 'soFar', newValue)}
       />
-      <EditableBalance
+      <EditableField
         value={goal.deadline}
         width="10em"
         onChange={newValue => updateGoal(goal.id, 'deadline', newValue)}
