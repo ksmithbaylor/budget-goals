@@ -98,6 +98,10 @@ export default class Month {
     return !this.isAfter(other);
   }
 
+  diff(other: Month): number {
+    return (other.year - this.year) * 12 + (other.number - this.number) + 1;
+  }
+
   toString(): string {
     return `${this.name} ${this.year}`;
   }

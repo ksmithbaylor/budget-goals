@@ -59,4 +59,11 @@ describe('Month', () => {
       expect(m(5, 2017).isNotBefore(m(7, 2018))).toBeFalsy();
     });
   });
+
+  test('diff', () => {
+    expect(m(5, 2016).diff(m(1, 2017))).toBe(9);
+    expect(m(5, 2016).diff(m(5, 2016))).toBe(1);
+    expect(m(5, 2016).diff(m(6, 2016))).toBe(2);
+    expect(m(5, 2015).diff(m(6, 2016))).toBe(14);
+  });
 });

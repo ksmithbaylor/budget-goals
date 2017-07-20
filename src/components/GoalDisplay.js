@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import StartDateSelector from './StartDateSelector';
 import EditableField from './EditableField';
+import PerMonth from './PerMonth';
 import startDateFor from '../store/selectors/startDateFor';
 import type Goal from '../model/goal';
 import type Month from '../model/month';
@@ -64,7 +65,7 @@ function GoalDisplay({
         width="10em"
         onChange={newValue => updateGoal(goal.id, 'deadline', newValue)}
       />
-      <td>- -</td>
+      <PerMonth goal={goal} />
       <td>
         <StartDateSelector
           goal={goal}

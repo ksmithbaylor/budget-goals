@@ -5,7 +5,7 @@ import Big from 'big.js';
 export default class Money extends Big {
   // Needed for Flow to recognize this as its own subclass
   // eslint-disable-next-line no-useless-constructor
-  constructor(input: number | string): void {
+  constructor(input: number | string | Big): void {
     super(input);
   }
 
