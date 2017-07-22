@@ -11,7 +11,7 @@ import 'pavilion/dist/pavilion.min.css';
 
 render(
   <Provider store={store}>
-    <App />
+    <App monthsAhead={12} />
   </Provider>,
   document.getElementById('root')
 );

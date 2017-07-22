@@ -66,13 +66,7 @@ function GoalDisplay({
         onChange={newValue => updateGoal(goal.id, 'deadline', newValue)}
       />
       <PerMonth goal={goal} />
-      <td>
-        <StartDateSelector
-          goal={goal}
-          startDate={startDate}
-          monthsInAdvance={12}
-        />
-      </td>
+      <StartDateSelector goal={goal} startDate={startDate} />
       <DeleteButton onClick={() => removeGoal(goal.id)} />
     </Row>
   );

@@ -4,6 +4,7 @@ import React from 'react';
 import styled, { injectGlobal } from 'styled-components';
 
 import Goals from './Goals';
+import Summary from './Summary';
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
@@ -18,10 +19,11 @@ const Container = styled.div`
   padding: 1em;
 `;
 
-export default function App() {
+export default function App(props: { monthsAhead: number }) {
   return (
     <Container className="container">
-      <Goals />
+      <Goals {...props} />
+      <Summary {...props} />
     </Container>
   );
 }

@@ -1,6 +1,7 @@
 // @flow
 
 import Money from '../../model/money';
+import Month from '../../model/month';
 import type Goal from '../../model/goal';
 import type { State } from '../reducers';
 
@@ -9,7 +10,8 @@ export default function amountPerMonth(
   { goal }: { goal: Goal }
 ): ?Money {
   const start = state.startDates[goal.id];
-  if (start) {
+
+  if (start instanceof Month) {
     const moneyLeft = goal.amount.minus(goal.soFar);
     const monthsLeft = start.diff(goal.deadline);
 

@@ -1,4 +1,7 @@
+// @flow
+
 import { createSelector } from 'reselect';
+import { map } from 'lodash';
 
 import type { State } from '../store/reducers';
 import type { GoalsState } from '../store/reducers/goals';
@@ -6,7 +9,5 @@ import type { GoalsState } from '../store/reducers/goals';
 const getGoals = (state: State) => state.goals;
 
 export default createSelector([getGoals], (goals: GoalsState) => {
-  return Object.keys(goals)
-    .sort((a, b) => goals[a].deadline.isAfter(goals[b].deadline))
-    .map(id => goals[id]);
+  return map(goals).sort((a, b) => a.deadline.isAfter(b.deadline));
 });
