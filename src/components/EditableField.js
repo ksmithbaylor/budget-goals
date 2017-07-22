@@ -36,14 +36,12 @@ export default class EditableField extends React.Component {
     let newValue = this.state.tempValue;
 
     if (this.props.value instanceof Money) {
-      newValue = new Money((this.state.tempValue: any));
+      newValue = new Money((this.state.tempValue: any) || 0);
     } else if (this.props.value instanceof Month) {
       newValue = Month.fromMonthYearString((this.state.tempValue: any));
     }
 
-    console.log('setting state');
     this.setState({ editing: false }, () => {
-      console.log('calling onChange with', newValue);
       this.props.onChange(newValue);
     });
   };
@@ -75,6 +73,7 @@ export default class EditableField extends React.Component {
     if (this.editField) {
       this.editField.value = '';
       this.editField.value = this.state.tempValue;
+      this.editField.select();
     }
   };
 
