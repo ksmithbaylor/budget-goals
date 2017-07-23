@@ -8,6 +8,7 @@ import {
   VictoryAxis,
   VictoryStack,
   VictoryBar,
+  VictoryTooltip,
   VictoryTheme,
   Line
 } from 'victory';
@@ -23,10 +24,12 @@ function Summary(props: { data: MonthlyGoalData }) {
     <VictoryBar
       key={goalData.goal.id}
       style={{ data: { fill: chartColors[i] } }}
+      labelComponent={<VictoryTooltip dy={-8} />}
       data={zipWith(monthRange, goalData.data, (month, amount) => {
         return {
           x: month.name,
-          y: amount ? parseFloat(amount.toFixed(2)) : 0.0
+          y: amount ? parseFloat(amount.toFixed(2)) : 0.0,
+          label: goalData.goal.name
         };
       })}
     />
