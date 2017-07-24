@@ -60,6 +60,7 @@ function Summary(props: { data: MonthlyGoalData }) {
       />
       <VictoryAxis
         dependentAxis
+        tickCount={10}
         tickFormat={tick => new Money(tick).toString()}
         gridComponent={<Line style={{ display: 'none' }} />}
       />
