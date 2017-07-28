@@ -2,9 +2,11 @@
   "name": "budget-goals",
   "description": "",
   "version": "0.0.0",
+  "homepage": "https://budget-goals.kevinjs.com",
   "dependencies": {
     "big.js": "^3.1.3",
     "flow-bin": "^0.49.1",
+    "gh-pages": "^1.0.0",
     "linkstate": "^1.0.1",
     "lodash": "^4.17.4",
     "pavilion": "^2.0.3",
@@ -23,6 +25,8 @@
     "react-scripts": "1.0.0"
   },
   "scripts": {
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
