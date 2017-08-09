@@ -8,7 +8,6 @@ import {
   VictoryAxis,
   VictoryStack,
   VictoryBar,
-  VictoryTooltip,
   VictoryTheme,
   Line
 } from 'victory';

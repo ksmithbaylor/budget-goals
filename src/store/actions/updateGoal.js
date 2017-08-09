@@ -1,6 +1,5 @@
 // @flow
 
-import type Goal from '../../model/goal';
 import type Money from '../../model/money';
 import type Month from '../../model/month';
 

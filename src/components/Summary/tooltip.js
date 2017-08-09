@@ -5,6 +5,7 @@ import { injectGlobal } from 'styled-components';
 window.tooltipText = '';
 window.tooltip = null;
 
+// eslint-disable-next-line no-unused-expressions
 injectGlobal`
   .goalTooltip {
     position: absolute;

@@ -1,7 +1,5 @@
 // @flow
 
-import { createSelector } from 'reselect';
-
 import startDateFor from './startDateFor';
 import amountPerMonth from './amountPerMonth';
 import sortedGoals from './sortedGoals';
