@@ -9,5 +9,5 @@ import type { GoalsState } from '../store/reducers/goals';
 const getGoals = (state: State) => state.goals;
 
 export default createSelector([getGoals], (goals: GoalsState) => {
-  return map(goals).sort((a, b) => a.deadline.isAfter(b.deadline));
+  return map(goals).sort((a, b) => b.deadline.diff(a.deadline));
 });
